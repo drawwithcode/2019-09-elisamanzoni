@@ -10,6 +10,32 @@
     html, body { overflow-y: hidden; }
     body { position: relative; }
 
+    .eliminated{
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: -170vh;
+      left:-150vw;
+    }
+
+    .centered{
+      transform: translate(-50%, -50%);
+      position: absolute;
+      top: 75vh;
+      left:50vw;
+    }
+
+    .button{
+      background-color: red;
+      border:0;
+      font-family: 'VT323';
+      color: white;
+      text-align: center;
+      font-size: 30px;
+      width:150px;
+      height:30px;
+      padding-top:5px;
+    }
+
      body {padding: 0; margin: 0;} </style>
     <script src="./addons/p5.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=VT323&display=swap" rel="stylesheet">
@@ -17,5 +43,6 @@
     <script src="sketch.js"></script>
   </head>
   <body>
+    <div id='button' class='button eliminated'>PLAY AGAIN</div>
   </body>
 </html>

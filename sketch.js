@@ -27,6 +27,9 @@ function setup() {
 
   //impostazioni shaker
   setShakeThreshold(10);
+
+  var play_again = select('#button');
+  play_again.mouseClicked(ricarica);
 }
 
 
@@ -52,15 +55,31 @@ function draw() {
   }
 
   //la rotazione totale del surfer è data dalla rotazione automatica + la rotation manuale dell'utente
-  rotation_total = auto_r * 2.5 + rotationY * (number);
+  rotation_total = auto_r * 2.5 + rotationY*(0.8) * (number);
   number = 1;
 
+  push();
   translate(windowWidth / 2, 2.2* (windowHeight / 3));
   rotate(rotation_total);
-
   //inserisco il surfer
   imageMode(CENTER);
   image(surfer, 0, -100, surfer.width / 14, surfer.height / 14);
+  pop();
+
+  rectMode(CENTER);
+  noStroke();
+  fill('blue');
+  rect(width/2, (8.5*height)/10, 150, 20);
+
+  fill('red');
+  rect(width/2+80, (8.5*height)/10, 20, 20);
+
+  fill('red');
+  rect(width/2-80, (8.5*height)/10, 20, 20);
+
+  fill('yellow');
+  rect(width/2+rotation_total*5, (8.5*height)/10, 10, 20);
+
   pop();
 
 //se la rotazione totale è tra -14 e 14 tutto rimane normale
@@ -98,20 +117,18 @@ function draw() {
     fill('white');
     textSize(30);
     textAlign(CENTER);
-    text('YOU ARE SAVE!', width / 2, height / 2 + 170);
+    text('THE SURFER IS SAFE!', width / 2, height / 2 + 170);
 
-    noStroke();
-    fill('red');
-    rectMode(CENTER);
-    rect(windowWidth/2, height / 2 + 220, 150, 50);
-
-    fill('white');
-    textSize(30);
-    textAlign(CENTER);
-    text('PLAY AGAIN', width / 2, height / 2 + 230);
+    var play_again = select('#button');
+    play_again.removeClass('eliminated');
+    play_again.addClass('centered');
   }
 
 //end of draw
+}
+
+function ricarica(){
+  location.reload(true)
 }
 
 
